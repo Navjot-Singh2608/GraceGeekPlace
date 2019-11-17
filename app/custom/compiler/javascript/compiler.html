@@ -1,0 +1,126 @@
+<div>
+
+  <!--  <link href="css/modal-minimize-and-maximize/font-awesome.css" rel="stylesheet" type="text/css" />-->
+    <style type="text/css">
+
+    </style>
+
+
+    <div class="cust-container">
+
+      <!--  <h5>A demo of modal</h5>-->
+        <!-- Trigger the modal with a button -->
+
+
+        <!-- Modal -->
+        <div class="cust-modal cust-fade mymodal" style="z-index: 9999999" id="customModel" custom-role="dialog">
+            <div style="margin-top: 6px;margin-right: 47%" class="cust-modal-dialog">
+
+                <!-- Modal content-->
+                <div id="customCompiler" class="cust-modal-content">
+                    <div id="customModelHeader" class="cust-modal-header" style="cursor: move;height: 52px;">
+                        <div  style="margin-top: -13px" class="row">
+                            <div  class="col-md-2 col-lg-2">
+                                <div style="display:inline">Select Compiler</div>
+
+                            </div>
+                            <div   id="compilerDropDown"  class="col-md-8 col-lg-8">
+
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-4">
+                                        <div   id="compilerThemeDropDown" style="float: right">
+                                            <div class="dropdown">
+                                                <!--Trigger-->
+                                                <button class="btn btn-primary dropdown-toggle" style="margin-top: -12px" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">Theme</button>
+                                                <!--Menu-->
+                                                <div class="dropdown-menu dropdown-primary">
+                                                    <a class="dropdown-item" ng-repeat="theme in customTheme" ng-click="selectTheme(theme)" href="#">{{theme}}</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-4">
+                                        <div class="dropdown" style="float: right">
+                                            <!--Trigger-->
+                                            <button class="btn btn-primary dropdown-toggle" style="margin-top: -12px" type="button" id="compilerMode" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">{{selectedCompilerMode}}</button>
+                                            <!--Menu-->
+                                            <div class="dropdown-menu dropdown-primary">
+                                                <a class="dropdown-item" href="#" ng-click="compilerChange(compiler)" ng-repeat="compiler in  compilerModeList">{{compiler}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-4">
+                                        <div style="float: right"><button class="btn btn-primary" ng-click="sendCompilerCode()" type="button" id="sendCompilerCode">Send Compiler Code</button></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 col-lg-2">
+
+                                <button type="button" class="close" data-dismiss="cust-modal"> <i class='fa fa-times'></i> </button>
+                                <button class="close modalMinimize"> <i class='fa fa-minus'></i> </button>
+                                <p class="compiler-setting"><i class="fas fa-cog"></i></p>
+
+                            </div>
+
+
+                        </div>
+                       <!-- <h4 class="cust-modal-title">A demo of modal with min/max options</h4>-->
+                    </div>
+
+                    <div class="cust-modal-body" style="padding: 0px">
+                        <custom-javascript-compiler></custom-javascript-compiler>
+                    </div>
+
+                    <div class="cust-modal-footer"  style="">
+                        <p>Place the footer options like Ok, Cancel buttons here</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+       <!*********************************notification message**************************************************>
+
+
+
+        <div class="minmaxCon"></div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+
+
+
+    </script>
+</div>
+
+
+

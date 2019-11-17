@@ -1,0 +1,162 @@
+<ng-include src=" 'app/layout/views/navigation.html' "></ng-include>
+
+<div class="row">
+    <div class="col-sm-9 col-md-9">
+        <ng-include src=" 'app/layout/message-container/views/messageContainer.html'"></ng-include>
+        <!--Footer-->
+    </div>
+
+    <div ng-if="pageType == 'user'" class="col-sm-3 col-md-3">
+        <div class="card indigo text-center z-depth-2" style="height:45px">
+            <div class="card-body" style="padding: 10px">
+               <!-- <p class="white-text mb-0">Select the Mode</p>-->
+                <!-- Material switch -->
+                <div class="switch">
+                    <label style="color:#ffffff">
+                        Ask Questions
+                        <input ng-click="userToggleSwitchForAskQuestionAndLiveUserRequest(askQuestion =!askQuestion)" type="checkbox">
+                        <span class="lever"></span>Live Users Requests
+                    </label>
+                </div>
+            </div>
+        </div>
+
+      <!------------------ left Menu for content for ask question mode and live users request handling mode----------------------->
+        <div>
+           <!**********************left menu for the ask question mode Channel Group*********************>
+            <div ng-if="selectGroupAskMode">
+                <div  class="dropdown">
+                    <!--Trigger-->
+                    <button ng-bind="language" style="position: absolute;right: 114px;width: 168px;top: 53px" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+
+                    <!--Menu-->
+                    <div  class="dropdown-menu dropdown-primary">
+                        <a class="dropdown-item" ng-click="selectedLanguage(x)"  ng-repeat="x in names" href="#">{{x}}</a>
+                    </div>
+                    <!--/Dropdown primary-->
+                    <b ng-if="messageStatus=='fail'" style="color:#ff0000;">please select the language</b>
+                </div>
+            </div>
+            <!*********************left menu for the ask question mode live User Chat**************************>
+            <div class="white z-depth-1 px-3 pt-3 pb-0" ng-if="liveUserRequestsMode">
+                <ul style="width:110%;margin-top: -10px" class="list-group list-unstyled friend-list">
+                    <li ng-repeat="liveUserRequest in liveUserRequestList | reverse track by liveUserRequest.uuid" id="{{'liveUserRequest' + $index}}"  style="font-weight: bold;box-shadow: none !important;border-left: 0px solid;border-right: 0px solid;margin-bottom: 7px" ng-click="AcceptLiveUserRequest(liveUserRequest,'list-group-item')" class="list-group-item d-flex justify-content-between align-items-center liveRequestUserCard img-fluid rounded p-2">
+                        <a href="#" class="d-flex justify-content-between">
+                            <img ng-if="liveUserRequest.liveRequestUserPic" src = "userProfileImage/{{liveUserRequest.liveRequestUserPic}}" width="38px" height="38px" alt="avatar" class="avatar rounded-circle d-flex align-self-center z-depth-1 image-border">
+                            <img ng-if="!liveUserRequest.liveRequestUserPic" src="../../img/avatar.png" class="avatar-img user-nav-image-border" alt="View"/>
+                            <div class="text-small">
+                                <strong style="color: #007bff;padding-left: 5px">{{liveUserRequest.liveRequestUserName}}</strong>
+                                <p style="position: absolute;font-family:sans-serif;font-size: 14px;font-weight: 400;padding-left: 12px" class="last-message text-muted">{{liveUserRequest.messageContent | limitTo: 15}}{{liveUserRequest.messageContent.length>15? '...':''}}</p>
+                                <!-- <span style="color:#ffffff" class="badge badge-primary badge-pill"></span>-->
+                            </div>
+                            <div style="position: absolute;right:1px" class="chat-footer">
+                               <!-- <p style="font-family: sans-serif;font-weight: 600;font-size: 12px;padding-left: 30px" class="text-smaller text-muted mb-0">Just now</p>-->
+                                <span ng-show="liveUserRequest.liveRequestUserRequestCount!=0" style="color:#ffffff;min-width: 1rem" class="badge badge-danger float-right">{{liveUserRequest.liveRequestUserRequestCount}}</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+          <!********************End**************************************************************>
+
+        </div>
+
+
+
+        <!--<div class="card text-center z-depth-2" style="height:45px;margin-top:30px">
+            <div class="card-body">
+                <p class="white-text mb-0" style="margin-top: -7px">Select the Theme</p>
+            </div>
+        </div>-->
+        <div style="position: absolute;top: 129px;">
+            <button type="button" class="btn btn-demo" data-toggle="modal" data-target="#fullHeightModalRight">
+                Right Sidebar Modal
+            </button>
+        </div>
+
+
+        <!********************************** right side modal for the Notifications*******************************************>
+        <!-- Full Height Modal Right -->
+        <div class="modal fade right" style="max-height: 97%!important;" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+
+            <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+            <div class="modal-dialog modal-full-height modal-right" role="document">
+
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="width:110%;margin-top: -10px" class="list-group list-unstyled friend-list">
+                            <li ng-repeat="compilerNotification in compilerNotificationList | reverse track by compilerNotification.uuid" id="{{'compilerNotification' + $index}}"
+                                style="font-weight: bold;box-shadow: none !important;border-left: 0px solid;border-right: 0px solid;margin-bottom: 7px"
+                                ng-click="showSenderCompilerCode(compilerNotification)" class="list-group-item d-flex justify-content-between align-items-center liveRequestUserCard img-fluid rounded p-2">
+                                <a href="#" class="d-flex justify-content-between">
+                                    <img ng-if="compilerNotification.compilerCodeSenderuserPicName" src = "{{compilerNotification.compilerCodeSenderuserPicName}}" width="38px" height="38px" alt="avatar" class="avatar rounded-circle d-flex align-self-center z-depth-1 image-border">
+                                    <img ng-if="!compilerNotification.compilerCodeSenderuserPicName" src="../../img/avatar.png" class="avatar-img user-nav-image-border" alt="View"/>
+                                    <div class="text-small">
+                                       <!-- <strong style="color: #007bff;padding-left: 5px">{{compilerNotification.liveRequestUserName}}</strong>-->
+                                        <p style="position: absolute;font-family:sans-serif;font-size: 14px;font-weight: 400;padding-left: 12px" class="last-message text-muted">Hello</p>
+                                        <!-- <span style="color:#ffffff" class="badge badge-primary badge-pill"></span>-->
+                                    </div>
+                                    <div style="position: absolute;right:1px" class="chat-footer">
+                                        <p style="font-family: sans-serif;font-weight: 600;font-size: 12px;padding-left: 30px" class="text-smaller text-muted mb-0">Just now</p>
+                                        <span style="color:#ffffff;min-width: 1rem" class="badge badge-danger float-right">{{liveUserRequest.liveRequestUserRequestCount}}</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" id="closeNotification" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                       <!-- <button type="button" class="btn btn-primary">Save changes</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Full Height Modal Right -->
+        <!-- Full Height Modal Right -->
+
+
+
+    </div>
+</div>
+<style>
+    .badge {
+        display: inline-block;
+        padding: .25em .4em;
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25rem;
+    }
+    .float-right {
+        float: right!important;
+    }
+    .badge-danger {
+        background-color: #ff3547!important;
+        color: #fff!important;
+    }
+
+    #fullHeightModalRight{
+        position: absolute;
+        left:-83px!important;
+        /* overflow-y: visible; */
+        max-height: 120%!important;
+        width: 394px!important;
+        height: 120%!important;
+        /* bottom: -37%!important; */
+    }
+
+    </style>
+<div id="footerId" class="footer">
+    <p>Footer</p>
+</div>

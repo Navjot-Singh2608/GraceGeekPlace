@@ -1,0 +1,195 @@
+<ng-include  src=" 'app/layout/views/navigation.html' "></ng-include>
+<div  ng-controller="blogListCtrl" style="margin-top: 10px" class="bd-example bd-example-tabs">
+
+  <div  style="padding: 20px">
+
+
+      <div class="row">
+
+          <div class="col-md-3 col-lg-3">
+              <div class="nav-side-menu">
+                  <div class="brand">Brand Logo</div>
+                  <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+                  <div class="menu-list">
+
+                      <ul id="menu-content" class="menu-content collapse out">
+                          <li>
+                              <a href="#">
+                                  <i class="fas fa-tachometer-alt fa-lg"></i> Dashboard
+                              </a>
+                          </li>
+
+                          <li  data-toggle="collapse" data-target="#products" class="collapsed active">
+                              <a href="#"><i class="fab fa-studiovinari fa-lg"></i> UI Elements <span class="arrow"></span></a>
+                          </li>
+                          <ul class="sub-menu collapse" id="products">
+                              <li class="active"><a href="#">CSS3 Animation</a></li>
+                              <li><a href="#">General</a></li>
+                              <li><a href="#">Buttons</a></li>
+                              <li><a href="#">Tabs & Accordions</a></li>
+                              <li><a href="#">Typography</a></li>
+                              <li><a href="#">FontAwesome</a></li>
+                              <li><a href="#">Slider</a></li>
+                              <li><a href="#">Panels</a></li>
+                              <li><a href="#">Widgets</a></li>
+                              <li><a href="#">Bootstrap Model</a></li>
+                          </ul>
+
+
+                          <li data-toggle="collapse" data-target="#service" class="collapsed">
+                              <a href="#"><i class="fab fa-fort-awesome-alt fa-lg"></i> Services <span class="arrow"></span></a>
+                          </li>
+                          <ul class="sub-menu collapse" id="service">
+                              <li>New Service 1</li>
+                              <li>New Service 2</li>
+                              <li>New Service 3</li>
+                          </ul>
+
+
+                          <li data-toggle="collapse" data-target="#new" class="collapsed">
+                              <a href="#"><i class="fab fa-pagelines fa-lg"></i> New <span class="arrow"></span></a>
+                          </li>
+                          <ul class="sub-menu collapse" id="new">
+                              <li>New New 1</li>
+                              <li>New New 2</li>
+                              <li>New New 3</li>
+                          </ul>
+
+
+                          <li>
+                              <a href="#">
+                                  <i class="fas fa-user-tie fa-lg"></i> Profile
+                              </a>
+                          </li>
+
+                          <li>
+                              <a href="#">
+                                  <i class="fa fa-users fa-lg"></i> Users
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-9 col-lg-9">
+              <table id="dtBasicExample" style="margin-top: -20px" class="table table-filter" cellspacing="2" width="100%">
+                  <thead>
+                  <tr style="padding: 13px">
+                      <th class="th-sm">Name</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr class="onHoverBlog"  ng-repeat="blog in blogList">
+                      <td class="onHoverBlog">
+                          <div style="margin: -7px;height:210px" class="blog-container" >
+
+                              <div class="blog-header">
+                                  <div class="blog-author--no-cover">
+                                      <h3>Russ Beye</h3>
+                                  </div>
+                              </div>
+
+                              <div class="blog-body">
+                                  <div class="blog-title">
+                                      <h1><a href="#">{{blog.postName}}</a></h1>
+                                  </div>
+                                  <div class="blog-summary">
+                                      <p>{{blog.postDescription}}</p>
+                                  </div>
+                                  <button  style="display: inline;margin-right: -5px;float:right;background-color: #439ede!important;padding: 8px 17px 8px 17px" ng-click="blogPost(blog)" class="btn btn-success blogBtn"  type="button"><span>Read Post</span></button>
+                                  <div class="blog-tags">
+                                      <ul>
+                                          <li><a href="#">design</a></li>
+                                          <li><a href="#">web dev</a></li>
+                                          <li><a href="#">css</a></li>
+                                      </ul>
+                                  </div>
+                              </div>
+
+                              <div class="blog-footer">
+                                  <ul>
+                                      <li class="published-date">12 days ago</li>
+                                      <li class="comments"><a href="#"><svg class="icon-bubble"><use xlink:href="#icon-bubble"></use></svg><span class="numero">8</span></a></li>
+                                      <li class="shares"><a href="#"><svg class="icon-star"><use xlink:href="#icon-star"></use></svg><span class="numero">3</span></a></li>
+                                  </ul>
+                              </div>
+
+                          </div>
+                      </td>
+                  </tr>
+                  </tbody>
+
+              </table>
+          </div>
+
+      </div>
+
+
+          <style>
+              input[type=search] {
+                  padding: 3px;
+              }
+          </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+    <script>
+        $(document).ready(function() {
+
+        });
+    </script>
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+   &lt;!&ndash; <script type="text/javascript" src="//use.typekit.net/wtt0gtr.js"></script>&ndash;&gt;
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
+<style>
+    body {
+        background: #e5ded8;
+    }
+
+</style>
+</div>
+<br>
+<ng-include style="margin-top: 200px" src=" 'app/layout/views/footer.html' "></ng-include>

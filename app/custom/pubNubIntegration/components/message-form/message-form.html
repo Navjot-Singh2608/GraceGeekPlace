@@ -1,0 +1,48 @@
+<div class="message-form">
+    <form style="width:100%" ng-submit="sendMessage(content)" class="container">
+        <div class="row">
+            <div class="input-field col-lg-7 col-md-7 col-sm-12">
+                <i class="prefix mdi-communication-chat"></i>
+                <p class="lead emoji-picker-container">
+                    <textarea ng-if="pageType=='user'" ng-model="message.content" type="text" class="custom-textarea-user-chat" placeholder="Type your message"
+                              data-emojiable="true" data-emoji-input="unicode" type-tracking></textarea>
+                </p>
+              <!--  <span ng-if="pageType=='user'" class="chip left">-->
+                     <!--<user-avatar uuid="{{uuid}}"></user-avatar>-->
+                       <!-- Anonymous robot #{{uuid}}-->
+              <!-- </span>-->
+            </div>
+            <div class="input-field col-lg-2 col-md-2 col-sm-12">
+                 <!--<button ng-if="pageType=='user'" type="submit" class="waves-effect waves-light btn-floating btn-large">
+                    <i class="fa fa-send-o" aria-hidden="true"></i>
+                  </button>-->
+                <button ng-if="pageType=='user'" type="submit" class="btn btn-primary">Submit</button>
+
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+               <!-- ut type='file' id="imgInp">-->
+                <!--<form class="md-form">-->
+                    <div class="file-field" style="margin-top: 16px">
+                        <button class="btn-floating mt-0 float-left">
+                            <i class="fas fa-paperclip" aria-hidden="true"></i>
+                            <input type="file" id="imgInp">
+                        </button>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" style="margin-top: -11px;margin-left: -8px" type="text" placeholder="Upload your file">
+                        </div>
+                    </div>
+              <!--  </form>-->
+            </div>
+        </div>
+    </form>
+    <style>
+        .emoji-menu
+        {
+            bottom: 305px !important;
+            transform: none !important;
+            position: relative !important;
+            right: auto !important;
+            left: 290px !important;
+            top: auto !important; }
+    </style>
+</div>

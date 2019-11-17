@@ -1,0 +1,36 @@
+[{
+  "text": "Freelancer",
+  "value": "",
+  "id": 1,
+  "open": false,
+  "checked": false
+},
+  {
+    "text": "Employer",
+    "value": "",
+    "id": 2,
+    "open": true,
+    "children": false
+  },
+  {
+    "text": "Teacher",
+    "value": "",
+    "id": 3,
+    "open": false
+  },
+  {
+    "text": "Student",
+    "value": "",
+    "id": 3,
+    "children": false,
+    "open": false
+  },
+  {
+    "text": "Learner",
+    "value": "",
+    "id": 3,
+    "children": false,
+    "open": false
+  }
+
+]

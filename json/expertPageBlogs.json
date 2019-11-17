@@ -1,0 +1,77 @@
+[
+  {
+    "title": "Java",
+    "clickParam": "java",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": "Android",
+    "clickParam": "android",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": ".Net",
+    "clickParam": ".net",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": "Javascript",
+    "clickParam": "javascript",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": "PHP",
+    "clickParam": "php",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": "C / C++",
+    "clickParam": "c/c++",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": "C#",
+    "clickParam": "c#",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": "Phython",
+    "clickParam": "phython",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": "SQL",
+    "clickParam": "sql",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": "Ruby On Rails",
+    "clickParam": "rubyonrails",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": "Objective C",
+    "clickParam": "objectiveC",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": "Perl",
+    "clickParam": "perl",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": "HTML / CSS",
+    "clickParam": "html/css",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": "Scala",
+    "clickParam": "scala",
+    "backgroundImage": "blogbackground.jpg"
+  },
+  {
+    "title": "Others",
+    "clickParam": "others",
+    "backgroundImage": "blogbackground.jpg"
+  }
+]
