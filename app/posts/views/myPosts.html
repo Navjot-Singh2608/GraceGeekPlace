@@ -34,18 +34,18 @@
                                         <div style="display:contents" class="row">
                                             <div class="col-md-6 col-lg-6">
                                                 <div class="form-group">
-                                                    <label style="font-family: cursive" class="custom-asterisks required">Post Name</label>
-                                                    <input type="text" style="width: 358px!important;margin-left: 28px" ng-model="myPost.postName" class="default-input form-control post-input" id="postName">
+                                                    <label class="custom-asterisks required">Post Name</label>
+                                                    <input type="text" style="width: 386px!important;margin-left: 28px" ng-model="myPost.postName" class="default-input form-control post-input" id="postName">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label style="font-family: cursive" for="topicCovered">Topic Covered</label>
+                                                    <label for="topicCovered">Topic Covered</label>
                                                     <textarea  ng-model="myPost.topicCovered" class="form-control rounded-0 post-input" id="topicCovered" rows="3"></textarea>
                                                 </div>
 
                                             </div>
                                             <div class="col-md-6 col-lg-6">
                                                 <div class="form-group">
-                                                    <label style="font-family: cursive">Language </label>
+                                                    <label>Language </label>
 <!--
                                                     <input ng-model="myPost.languageUsed" type="text" class="form-control post-input" id="email">
 -->
@@ -70,16 +70,28 @@
 
                                                 </div>
                                                 <div class="form-group">
-                                                    <label style="font-family: cursive" for="description" class="custom-asterisks required">Description</label>
+                                                    <label for="description" class="custom-asterisks required">Description</label>
                                                     <textarea  style="margin-left: 31px" ng-model="myPost.postDescription" class="form-control rounded-0 post-input" id="description" rows="3"></textarea>
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        <div style="" class="post-tips" >
+                                            <div class="q-box" style="box-sizing: border-box; direction: ltr; flex: 1 1 0%;">
+                                                <div class="q-text qu-bold" style="color: #2e69ff;font-weight: bold">Tips for Good Post</div>
+                                                <ul><li>Make sure your post is good in content and Cover topic completely</li>
+                                                    <li>Keep your post cover topic in detail and clearly</li>
+                                                    <li>Double-check grammar and spelling</li>
+                                          </ul></div>
+                                        </div>
+
+
                                         <div style="display:contents;margin-top:20px" class="row">
                                             <div class="col-md-10 col-lg-10">
                                             </div>
                                             <div class="col-md-2 col-lg-2">
-                                                <button type="submit" ng-click="savePost()" class="btn btn-indigo">Save<i class="fa fa-paper-plane-o ml-1"></i></button>
+                                                <button type="submit" ng-click="savePost()" class="btn btn-indigo">Save<i></i></button>
                                             </div>
 
                                         </div>

@@ -3,17 +3,24 @@ var router = express.Router();
 var path = require("path");
 var crypto = require("crypto");
 var GridFsStorage = require("multer-gridfs-storage");
+var fileUpload = require("express-fileupload");
 var Grid = require("gridfs-stream");
 var file = require('file-system');
 var fs = require('mz/fs');
 var methodOvverride = require("method-override");
 var bodyParser = require("body-parser");
+
+
+
 var app = express();
 var http = require('http');
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 var passport = require('passport');
 // [SH] Initialise Passport before using the route middleware
 app.use(passport.initialize());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(fileUpload());
 // [SH] Bring in the data model
 var dbConfig =require('./routes/Model/dbconfig');
 var auth=require("./routes/authentication");
@@ -37,7 +44,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.set('superSecret', dbConfig.secret); // secret variable
-app.use(bodyParser.json());
+/*app.use(bodyParser.json());*/
 app.use(methodOvverride('_method'));
 app.use(express.static(__dirname));
 
@@ -52,6 +59,9 @@ var freelancer=require("./routes/freelancer");
 var student=require("./routes/student");
 var teacher=require("./routes/teacher");
 var employer=require("./routes/employer");
+var contact=require("./routes/message");
+var imageUpload=require("./routes/imageUpload");
+var cloud = require("./routes/cloud");
 
 var server = http.createServer(app);
 // get an instance of the router for api routes
@@ -119,7 +129,7 @@ app.post('/login',auth.LoginUser);
 
 
 app.get('/profile', profile.findById);
-app.get('/all/profile', profile.getAllUsersDetails);
+app.get('/userProfile', profile.getAllUsersDetails);
 app.post('/profile', profile.saveUserProfile);
 app.put('/profile/:id', profile.updateUserProfile);
 app.get('/profile/filenames',profile.getAllFilesNames);
@@ -162,19 +172,26 @@ app.put('/employer/:id', employer.updateEmployerProfile);
 
 app.get('/myBlog', myBlog.findById);
 app.get('/all/blog', myBlog.getAllUsersDetails);
+app.get('/getLangBlogAllData', myBlog.getLangBlogAllData);
+app.get('/myBlog/blogdetailcloudurl',myBlog.getBlogDetailDescriptionCloudUrl);
 app.post('/myBlog', myBlog.createBlog);
-app.put('/myBlog/:id', myBlog.updateUserProfile);
+app.put('/myBlog/:id', myBlog.updateUserPost);
+app.put('/myBlogObjectData/:id', myBlog.myBlogObjectData);
 app.put('/myBlogPost/:id', myBlog.updateUserBlogPost);
+app.put('/myBlogPostDetailDescription/:id/', myBlog.updateUserBlogPostDetailDescription);
 
 /*-----------------------------------------User Blogs----------------------------------------------------------------------*/
 
-
 app.get('/myPost', myPost.findById);
+app.get('/postData', myPost.postData);
 app.get('/all/Post', myPost.getAllUsersDetails);
 app.post('/myPost', myPost.createPost);
 app.put('/myPost/:id', myPost.updateUserProfile);
 
-/*-----------------------------------------User Blogs----------------------------------------------------------------------*/
+/*-----------------------------------------User Contact----------------------------------------------------------------------*/
+app.post('/userQuery', contact.createUserQuery);
+
+/*----------------- -------------------- cloud data saved------------------------------------------------------------------*/
 
 
 /*
@@ -226,8 +243,27 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 
-app.post('/uploads', upload.single('file'),imageAPI.uploadImage);
+/***************************************Upload File to amazon s3***********************************************************/
+app.post('/postdetaildescription', cloud.postDetailDescription);
+app.post('/updatepostdetaildescription', cloud.updatePostDetailDescription);
+app.get('/getpostdetaildescription', cloud.getPostDetailDesceription);
+
+
+/*****************************************************************************************************************************/
+
+
 app.post('/deleteImageFile', imageAPI.deleteImage);
+
+app.put('/imageUpload/:id', imageUpload.updateUserProfile);
+
+
+
+
+
+
+
+
+
 
 /*******************************editor Image Upload*************************************/
 
@@ -276,6 +312,10 @@ router.post('/upload_url', function (req, res) {
 
     });
 });
+
+/*****************************************************Create Post File Upload Button*****************************************************/
+app.put('/postUpload/:id', imageUpload.postUpload);
+
 
 
 

@@ -18,6 +18,7 @@ angular.module('myBlog').controller('blogsCtrl', ['$scope', '$rootScope', '$stat
 
 
 
+
     $scope.createBlog = function(){
         if($scope.userFirstTimeBlogCreated) {
             $http.post('/myBlog', $scope.myBlog).success(function (response) {
@@ -40,6 +41,22 @@ angular.module('myBlog').controller('blogsCtrl', ['$scope', '$rootScope', '$stat
                 })
             }
         };
+
+    /*Update Function of the Blog*/
+    $scope.updateBlog = function(){
+
+       if($scope.myBlog.blogName===undefined || $scope.myBlog.blogDescription === undefined){
+           toastr.success('Please Fill the Blog name and Blog Description');
+       }else{
+           $scope.createBlog();
+       }
+
+
+
+
+
+
+    }
 
 
 

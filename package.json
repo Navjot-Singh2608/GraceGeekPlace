@@ -1,6 +1,7 @@
 {
   "name": "graceproject",
   "version": "1.0.0",
+  "type": "module",
   "description": "Thanks for downloading this theme!",
   "main": "index.js",
   "scripts": {
@@ -48,6 +49,10 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
+    "@gooddata/react-components": "^7.7.0",
+    "@zoomus/websdk": "^1.7.10",
+    "angular": "^1.8.0",
+    "aws-sdk": "^2.709.0",
     "body-parser": "^1.15.2",
     "bson": "^1.0.4",
     "bson-objectid": "",
@@ -56,6 +61,7 @@
     "connect-multiparty": "^2.2.0",
     "ejs": "^2.6.1",
     "express": "^4.14.0",
+    "express-fileupload": "^1.1.6",
     "express-jwt": "^3.0.1",
     "express-session": "^1.11.3",
     "extract-zip": "^1.6.0",
@@ -69,12 +75,13 @@
     "materialize-css": "^0.97.5",
     "method-override": "^3.0.0",
     "mongodb": "^2.2.33",
-    "mongoose": "^5.0.9",
+    "mongoose": "^5.9.20",
     "mongoskin": "^2.1.0",
     "multer": "^1.2.1",
     "multer-gridfs-storage": "^3.2.3",
     "mz": "^2.7.0",
     "ng-file-model": "0.0.5",
+    "ngreact": "^0.5.2",
     "node-sass": "^4.7.2",
     "npm": "^5.7.1",
     "passport": "0.4.0",
@@ -84,7 +91,9 @@
     "rootpath": "^0.1.2",
     "to": "^0.2.9",
     "update": "^0.7.4",
+    "util": "^0.12.2",
     "write": "^0.3.2",
-    "writefile": "^0.2.8"
+    "writefile": "^0.2.8",
+    "zoomus-jssdk": "^1.7.1"
   }
 }

@@ -6,6 +6,7 @@ angular.module('myPosts').controller('postsCtrl', ['$scope', '$rootScope', '$sta
         $scope.userLocalStorage = JSON.parse($window.localStorage.getItem('userLocalStorage'));
         $scope.postNameList = [];
         $scope.postList = [];
+        $scope.postDetailObjectData = false;
 
         $scope.myBlog = JSON.parse($window.localStorage.getItem('myBlog'));
         $scope.myBlog.postDetails = [];
@@ -59,11 +60,6 @@ angular.module('myPosts').controller('postsCtrl', ['$scope', '$rootScope', '$sta
 
 
     $scope.savePost = function(){
-
-
-        $scope.postNumber = Date.now() + Math.random();
-        $scope.postNumber = Math.trunc($scope.postNumber);
-        $scope.myPost.postNumber = $scope.postNumber.toString();
         $scope.myPost.languageUsed = [];
         angular.forEach($scope.output_data, function(value, key) {
             $scope.myPost.languageUsed.push(value.text)
@@ -71,14 +67,25 @@ angular.module('myPosts').controller('postsCtrl', ['$scope', '$rootScope', '$sta
         var status = $scope.postValidation();
         if(status == true){
            /* $scope.myBlog.postDetail.*/
-
-            $scope.myBlog.postDetails["postDescription"] = $scope.myPost;
+            $scope.postNumber = Date.now() + Math.random();
+            $scope.postNumber = Math.trunc($scope.postNumber);
+            $scope.myPost.postNumber = $scope.postNumber.toString();
+            $scope.myBlog.postDetails.postDescription = [];
+            $scope.myBlog.postDetails.postDescription.push($scope.myPost);
             $scope.myBlog["postNumber"] = $scope.postNumber;
-            $http.put('/myBlog/' + $scope.myBlog.email, $scope.myBlog).success(function(response) {
-                console.log(response);
-                toastr.success('Post created successfully.');
-                $scope.fetchBlogData();
-            })
+            if($scope.postDetailObjectData){
+                $http.put('/myBlogObjectData/' + $scope.myBlog.email, $scope.myPost).success(function(response) {
+                    console.log(response);
+                    toastr.success('Post created successfully.');
+                    $scope.fetchBlogData();
+                })
+            }else{
+                $http.put('/myBlog/' + $scope.myBlog.email, $scope.myBlog).success(function(response) {
+                    console.log(response);
+                    toastr.success('Blog created successfully.');
+                    $scope.fetchBlogData();
+                })
+            }
         }
         else if(status == "duplicate"){
             toastr.success('Post Name can not be duplicate.');
@@ -95,11 +102,14 @@ angular.module('myPosts').controller('postsCtrl', ['$scope', '$rootScope', '$sta
         if($scope.userLocalStorage.email){
             blogService.getBlogData($scope.userLocalStorage.email).then(function (response) {
                 if(response.data.blogName){
+                    if(response.data.postDetails){
+                          $scope.postDetailObjectData = true;
+                    }
                     $scope.myBlog = response.data;
                    /* $window.localStorage.setItem('myBlog', JSON.stringify(myBlog));*/
                     var postDetails = Object.size($scope.myBlog.postDetails);
                     if(postDetails!=0){
-                        angular.forEach($scope.myBlog.postDetails, function(post, postKey) {
+                        angular.forEach($scope.myBlog.postDetails.postDescription, function(post, postKey) {
                             $scope.postList.push(post);
                             $scope.postNameList.push(postKey);
                         });
@@ -153,13 +163,6 @@ angular.module('myPosts').controller('postsCtrl', ['$scope', '$rootScope', '$sta
     $scope.allLanguagesData = function(){
         $http.get('json/allLanguages.json').then(function(response) {
             $scope.input_data = response.data;
-              /*  angular.forEach($scope.user.skills, function(userSkill){
-                    angular.forEach($scope.input_data, function(actualSkill){
-                        if(userSkill.text == actualSkill.text){
-                            actualSkill.checked = true;
-                        }
-                    });
-                });*/
         });
     };
 

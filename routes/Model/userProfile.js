@@ -20,6 +20,10 @@ var userSchema = new mongoose.Schema({
     skills:String,
     token:String,
     userCollection:String,
+    customImage:{
+        type: String,
+        required: true
+    },
     portNumber:String
 });
 
@@ -57,7 +61,13 @@ userSchema.methods.getEmailAddress = function(){
     return this.email ;
 };
 
+userSchema.methods.setCustomImage = function(){
+    return this.customImage ;
+};
 
+userSchema.methods.getCustomImage = function(){
+    return this.customImage ;
+};
 
 
 userSchema.methods.getCollection = function(){

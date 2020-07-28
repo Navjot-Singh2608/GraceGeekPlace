@@ -1,12 +1,14 @@
 
-angular.module('blogList').controller('blogListCtrl', ['$scope', '$rootScope', '$state', '$http', 'toastr', 'blogService','$window','profileService','blogListService', function($scope, $rootScope, $state, $http, toastr, blogService,$window,profileService,blogListService) {
+angular.module('blogList').controller('blogListCtrl', ['$scope', '$rootScope', '$state', '$http', 'toastr',
+    'blogService','$window','profileService','blogListService', function($scope, $rootScope, $state, $http,
+        toastr, blogService,$window,profileService,blogListService) {
 
     $scope.init = function(){
 
         $scope.userLocalStorage = JSON.parse($window.localStorage.getItem('userLocalStorage'));
         $scope.blogCategory = $window.localStorage.getItem('blogCategory');
         $scope.blogList = [];
-       $scope.fetchBlogList();
+       $scope.fetchBlogList($scope.blogCategory);
     };
 
 
@@ -26,25 +28,37 @@ angular.module('blogList').controller('blogListCtrl', ['$scope', '$rootScope', '
     }, 1000);
 
 
-    $scope.fetchBlogList = function(){
-            blogListService.getAllBlogData().then(function (response) {
-                angular.forEach(response.data[0].postDetails, function(blogObj,userKey) {
-                    angular.forEach(blogObj.languageUsed, function(blogObjLang,userKey) {
-                        if(blogObjLang == $scope.blogCategory){
-                            $scope.blogList.push(blogObj);
-                        }
-                    });
+    $scope.fetchBlogList = function(langSelected){
+            blogListService.getLangBlogAllData(langSelected).then(function (response) {
+                var postDetailData = response.data;
+                angular.forEach(postDetailData, function(blogObj,userKey) {
+                    var cusBlogObj = {
+                        fullName:blogObj.userDetail[0].fullName,
+                        country:blogObj.userDetail[0].country,
+                        state:blogObj.userDetail[0].state,
+                        customImage:blogObj.userDetail[0].customImage,
+                        skills:blogObj.userDetail[0].skills,
+                        postName:blogObj._id.BlogDetail.postName,
+                        postDescription:blogObj._id.BlogDetail.postDescription,
+                        postkey:blogObj._id.BlogDetail.postKey
+                    };
+                    $scope.blogList.push(cusBlogObj);
                 });
                console.log(response);
-            })
+            });
+
     };
 
 
-    $scope.blogPost = function(blogPost){
-        $rootScope.blogPost = blogPost;
+
+    $scope.blogPost = function(postkey){
+        $rootScope.postkey = postkey;
         $state.go("blogPost");
     };
 
+        $scope.hexToBase64 = function(str) {
+            return str;
+        }
 
 
 

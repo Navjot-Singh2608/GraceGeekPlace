@@ -1,7 +1,6 @@
-
 angular.module('expert')
-    .controller('expertCtrl', ['$scope','$state','$rootScope','$window','$http',
-        function($scope,$state,$rootScope,$window,$http){
+    .controller('expertCtrl', ['$scope','$state','$rootScope','$window','$http','$filter',
+        function($scope,$state,$rootScope,$window,$http,$filter){
 
 
 
@@ -14,6 +13,15 @@ angular.module('expert')
        /* $window.localStorage.setItem('userLocalStorage', JSON.stringify($scope.user));*/
 
         console.log($scope.userLocalStorage);
+
+           /* $rootScope.updateBlogs = function(newVal){
+                $scope.randomData = $scope.expertBlog
+                $scope.expertBlog = $filter('searchKeys')($scope.randomData,newVal);
+
+            };*/
+
+
+
 
         $scope.pageAskQuestion = function(selectedTopic){
         $rootScope.pageType = "group";
@@ -80,4 +88,20 @@ angular.module('expert')
    $scope.init();
 
     }]);
+
+angular.module('expert').filter('searchKeys', function() {
+    return function(items, search) {
+        var filtered = [];
+        if (search) {
+            angular.forEach(items, function(item) {
+                if (item.title.match("^" + search, "i")) {
+                    filtered.push(item);
+                }
+            });
+        }else{
+            filtered=items;
+        }
+        return filtered;
+    }
+})
 

@@ -1,3 +1,5 @@
+
+
 angular.module('app').directive('messageForm', function() {
   return {
     restrict: "E",
@@ -53,6 +55,9 @@ angular.module('app').directive('messageForm', function() {
       };
 
 
+
+
+
       $scope.getSecondPersonGroupData = function(){
         $scope.secondPersonGroupSelected = JSON.parse($window.localStorage.getItem('secondPersonGroupSelected'));
         if($scope.secondPersonGroupSelected && !$scope.userPrimaryChannelFlag){
@@ -60,6 +65,7 @@ angular.module('app').directive('messageForm', function() {
           $scope.secondPersonRequestDetail.email = $scope.secondPersonGroupSelected.email;
           $scope.secondPersonRequestDetail.userRequest = $scope.secondPersonGroupSelected.userRequest;
           $scope.secondPersonRequestDetail.userPicName = $scope.secondPersonGroupSelected.userPicName;
+          $scope.secondPersonRequestDetail.customImage = $scope.secondPersonGroupSelected.customImage;
           $scope.secondPersonRequestDetail.liveChatUserUniqueChannel = $scope.secondPersonGroupSelected.liveChatUserUniqueChannel;
         }
       };
@@ -81,6 +87,7 @@ angular.module('app').directive('messageForm', function() {
            $scope.user.sendRequestUserEmail = $scope.userLocalStorage.email;
            $scope.user.channelGroup = false;
            $scope.user.userchannelName = $scope.secondPersonRequestDetail.email;
+         /*  $scope.user.customImage = $scope.secondPersonRequestDetail.customImage;*/
            $scope.user.userRequest = $scope.secondPersonRequestDetail.userRequest;
            if($scope.userProfileStorage!=null){
              $scope.user.userPicName = $scope.userProfileStorage.userPicName;
@@ -95,7 +102,7 @@ angular.module('app').directive('messageForm', function() {
        else{ //This Block of code is for group Chat user
          if($rootScope.language == "Select Language" || $rootScope.language == undefined){
            $scope.messagesend= "fail";
-           $scope.messagestatus()
+           $scope.messagestatus();
          }else{
            $scope.user = {};
            $scope.user.messageContent = $scope.messageContent;
@@ -114,6 +121,7 @@ angular.module('app').directive('messageForm', function() {
            $scope.messagesend = "success";
          }
         }
+
       };
 
 

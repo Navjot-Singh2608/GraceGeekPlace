@@ -1,14 +1,25 @@
 angular.module('layout').controller('layoutCtrl', ['$scope', '$state', '$rootScope', 'profileService','$window', function ($scope, $state, $rootScope, profileService,$window) {
 
 
-
    /* dynamic height of the header*/
   /*  var dynamicHeaderHeight = document.getElementById('headerId').style.height;
     $rootScope.dynamicHeaderHeight = dynamicHeaderHeight;*/
     $scope.userPicName = "";
     $scope.userLocalStorage = JSON.parse($window.localStorage.getItem('userLocalStorage'));
+    $scope.userType = localStorage.getItem("userType");
     $scope.fullName = $scope.userLocalStorage.fullName;
     $scope.userEmailId = $scope.userLocalStorage.email;
+
+    $scope.homePlaceholder = {};
+
+   /* $scope.$watch("homePlaceholder.customSearch", function(newVal, oldVal) {
+        if (newVal !== oldVal) {
+           $rootScope.updateBlogs(newVal);
+        }
+    });*/
+
+
+
     $("#notification").hide();
 
     function isEmpty(obj) {
@@ -33,6 +44,7 @@ angular.module('layout').controller('layoutCtrl', ['$scope', '$state', '$rootSco
                        experience: response.data.experience,
                        skills: response.data.skills,
                        userPicName: response.data.userPicName,
+                       customImage: response.data.customImage,
                        _id:response.data._id
                    };
                    window.localStorage.setItem('userProfileStorage', JSON.stringify($scope.user));
@@ -51,13 +63,10 @@ angular.module('layout').controller('layoutCtrl', ['$scope', '$state', '$rootSco
         $state.go("groups");
     };
 
-
-
-
     if($rootScope.user != undefined){
         $rootScope.userPicName = $rootScope.user.userPicName;
     }else{
-        $rootScope.userPicName = ''
+        $rootScope.userPicName = '';
     }
 
 
@@ -69,13 +78,9 @@ angular.module('layout').controller('layoutCtrl', ['$scope', '$state', '$rootSco
         $state.go("expert");
     };
 
+    $scope.adminSpace = function(){
 
-        $(".navbar-nav a").on("click", function(){
-            $(".navbar-nav").find(".activeClass").removeClass("activeClass");
-            $(this).parent().addClass("activeClass");
-        });
-
-
+    }
 
     $rootScope.showCompilerNotification = function(messageContent){
         $scope.compilerMessage = messageContent.compilerMessage;
@@ -110,6 +115,15 @@ angular.module('layout').controller('layoutCtrl', ['$scope', '$state', '$rootSco
             closeMessage($('#js-timer'));
         }, 5000);
     });
+
+
+
+
+
+
+
+
+
 
 
 
@@ -155,7 +169,12 @@ angular.module('layout').controller('layoutCtrl', ['$scope', '$state', '$rootSco
 
     $scope.hireUser = function(){
         $state.go("hireUser");
-    }
+    };
+
+
+    $scope.hexToBase64 = function(str) {
+        return str;
+    };
 
 
 

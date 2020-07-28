@@ -12,6 +12,16 @@ angular.module('home').controller('homeCtrl',['$scope','$rootScope','$state','$h
     };
 
 
+    $scope.contactMessage = {
+             name:'',
+             subject:'',
+             query:''
+    };
+
+
+
+
+
     $scope.askExpert = function(){
         $state.go("expert");
     }
@@ -61,6 +71,14 @@ angular.module('home').controller('homeCtrl',['$scope','$rootScope','$state','$h
                 $rootScope.userChannelName = response.data.userData.email;
                 console.log("success!!"+response);
                 console.log("success!!"+response);
+
+                if(response.data.userData.fullName === "admin" && response.data.userData.email === "admin2608@gmail.com"){
+                    $rootScope.userType = "admin";
+                    localStorage.setItem("userType", "admin");
+                }else{
+                    $rootScope.userType = "user";
+                    localStorage.setItem("userType", "user");
+                }
 
                /* toastr.success('Successfully logged in.');*/
                 $('#modal-signin').hide();
@@ -156,6 +174,46 @@ angular.module('home').controller('homeCtrl',['$scope','$rootScope','$state','$h
               return_scopes: true
           })
      }
+
+
+     $scope.userQuery = function(){
+         $http.post('/userQuery', $scope.contactMessage).success(function(response) {
+             toastr.success('Your query submitted successfully.');
+             $('#modal-contact').modal('hide');
+         })
+     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -301,6 +301,7 @@
 }
 
 .userProfileAvater{
+    position: absolute;
     height: 150px;
     width: 150px;
     padding: 1px;
@@ -310,9 +311,12 @@
     border-radius: 88px !important;
 }
 .custom-upload{
-    color: transparent;
-    margin-left: 94px;
-    margin-top: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 11px;
+    cursor: pointer;
+    margin-top: 187px;
+    width: 294px;
 }
 .custom-textarea-user-chat{
     height: 48px;
@@ -677,7 +681,7 @@ pre {
     display: block;
     padding: 15px 20px;
     margin: 0;
-    background: #fe7725;
+    background: #3f51b5!important;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -1076,6 +1080,7 @@ canvas {
     color: #f1f1f1;
     width: 100%;
     padding: 20px;
+    min-height: 116%;
 }
 
 /*home page blogs*/
@@ -1394,5 +1399,167 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
     display: block;
     font-size: 18px;
 }
+
+.creativeBlog{
+    font-weight: bold;
+    font-family: cursive;
+    font-size: 25px;
+    margin-top: -10px;
+}
+.save-profile-btn{
+    position: absolute;
+    top: -74px;
+    z-index: 999;
+    right: 182px;
+    height: 42.19px
+}
+.avatarBackground{
+    position: absolute;
+    width: 295px;
+    height: 210px;
+}
+.educationCls{
+    width:101%;
+    margin-top: 20px;
+    margin-left: -2px;
+}
+.edu-card{
+    width:100%;
+    margin-top: 20px;
+    margin-left: -15px;
+}
+.textAlignLeft{
+    text-align: left !important;
+}
+
+.profile-label{
+    color: #90949c;
+    font-size: 15px;
+}
+.profile-input{
+    margin-left: 20px !important;
+    width: 260px !important;
+    height: 12px!important
+}
+
+.profile-list-label{
+    position: absolute;
+    left: 70px;
+    top:-3px;
+    font-weight: 400;
+    font-family:   -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;
+}
+
+.profile-list-sub-label{
+    position: absolute;
+    left: 70px;
+    top:15px;
+    color:#cfb0af;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;;
+}
+
+.post-tips{
+    background-color: #ebf0ff;
+    color: #2e69ff;
+    margin-left: 19px;
+    margin-top: 2px;
+    padding: 20px;
+}
+
+
+/**********************************dynamic Post Description pagination*****************************************/
+body {
+    background: #e5ded8;
+}
+.example-box {
+    margin: 10px;
+}
+.wraper {
+    padding: 10px;
+    background: #ffffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.custom-pages {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.custom-textarea {
+    font-size: 14px;
+    height: 305px;
+    line-height: 18px;
+    margin: 10px 0;
+}
+.tp-control-arrows {
+    height: 40px;
+    float: left;
+}
+.tp-control-pages {
+    height: 40px;
+}
+.tp-control-arrow-left {
+    background: #777777;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    margin: 0 5px;
+}
+.tp-control-arrow-right {
+    background: #777777;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    margin: 0 5px;
+}
+.tp-control-arrow-left.unactive {
+    background: #eee !important;
+}
+.tp-control-arrow-right.unactive {
+    background: #eee !important;
+}
+.tp-page {
+    background: #777777;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    padding: 10px;
+}
+.tp-page.active {
+    background: #0069d9;
+    color: #FFFFFF;
+}
+#appendData p{
+    margin: 30px!important;
+}
+
+.custom-pages li {
+    display: none;
+    color: #fff;
+    background-color: #444B6E;
+    padding: 5px 10px;
+    border: 2px solid #3D315B;
+    border-right: 0;
+
+}
+
+.custom-pages li:nth-child(-n+3) {
+    visibility: visible;
+}
+.postdescription-blog-custom-btn-forward-backward{
+    display: inline;
+    background-color: #439ede!important;
+    margin-top: 22px;
+}
+.highest-qualification{
+    margin-left: 58px;
+    width: 260px !important;
+    height: 12px!important;
+}
+
+
+
 
 

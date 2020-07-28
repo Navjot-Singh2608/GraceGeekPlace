@@ -10,6 +10,8 @@ angular.module('app')
   var requestUserSubscribeChannel="";
   var liveChatUserUniqueChannel = "";
   var checkDuplicateStatusMessageFlag = false;
+  var subContent = "";
+  var i = 0;
    if($window.localStorage.getItem('userLocalStorage')){
        var userLocalStorage = JSON.parse($window.localStorage.getItem('userLocalStorage'));
        channelName = userLocalStorage.email;
@@ -112,27 +114,41 @@ angular.module('app')
           }
       }
 
+
+
+
+
+
       subcribeNewMessage(function(ngEvent,m){
-         console.log("here is the new message");
-         console.log(m);
-         var compilerNotification = [];
-        if(m.content.CompilerNotification){
-            $rootScope.compilerNotificationCode(m.content);
-            compilerNotification.push(m);
-            $rootScope.getPageRefreshLiveUserData(compilerNotification);
-            $rootScope.$apply();
-        }else{
-            var status = checkLiveUserSynchronization(m.content.liveChatUserUniqueChannel);
-            if(status){
-                self.messages.push(m);
-                checkDuplicateStatusMessageFlag = true;
-            }
-            $rootScope.$apply();
-            LiveUserRequest.getLiveUserRequest(m);
-            $rootScope.getLiveChatUserRequest();
-            $rootScope.$digest();
-        }
+             console.log("here is the new message");
+             var compilerNotification = [];
+             if(m.content.CompilerNotification){
+                 console.log(m);
+                 $rootScope.compilerNotificationCode(m.content);
+                 compilerNotification.push(m);
+                 $rootScope.getPageRefreshLiveUserData(compilerNotification);
+                 $rootScope.$apply();
+             }else{
+                 var status = checkLiveUserSynchronization(m.content.liveChatUserUniqueChannel);
+                 if(status){
+                     self.messages.push(m);
+                     checkDuplicateStatusMessageFlag = true;
+                 }
+                 $rootScope.$apply();
+                 LiveUserRequest.getLiveUserRequest(m);
+                 $rootScope.getLiveChatUserRequest();
+                 $rootScope.$digest();
+             }
+
   });
+
+
+
+
+
+
+
+
 
       /*----------------------------subcribe new live Chat User Unique Channel-----------------------------------------*/
       subcribeNewUserUniqueChannelwMessage(function(ngEvent,m){
@@ -160,8 +176,10 @@ angular.module('app')
            channel: liveChatUserUniqueChannel,
            callback: function(m){
                // Update the timetoken of the first message
+
                self.timeTokenFirstMessage = m[1];
                angular.extend(self.messages, m[0]);
+
 
                if(m[0].length < defaultMessagesNumber){
                    self.messagesAllFetched = true;
@@ -268,80 +286,106 @@ angular.module('app')
 
      
      var sendMessage = function(messageContent) {
-        var RequestSendchannelName = "";
-        var liveChatUserUniqueChannel = "";
-      // Don't send an empty message 
-      if (_.isEmpty(messageContent))
-          return;
+         var RequestSendchannelName = "";
+         var liveChatUserUniqueChannel = "";
+         // Don't send an empty message
+         if (_.isEmpty(messageContent))
+             return;
 
-      if(messageContent.CompilerNotification){
-
-          Pubnub.publish({
-              channel: messageContent.comppilerCodeReceiverChannelName,
-              message: {
-                  /*message_id: */
-                  uuid: (Date.now() + currentUser),
-                  message_id:messageContent.messageId,
-                  content: messageContent,
-                  usecase: "delete",
-                  sender_uuid: currentUser,
-                  date: Date.now()
-              }
-          });
-
-      }else{
-          if(messageContent.userRequest){
-              /*In case of the user request*/
-              RequestSendchannelName = messageContent.userchannelName;
-              channelName = messageContent.sendRequestUserEmail;
-              liveChatUserUniqueChannel = messageContent.liveChatUserUniqueChannel;
-          }else{
-              /*In case of the user response*/
-              /*$rootScope.channelName = messageContent.userchannelName;*/
-              RequestSendchannelName = messageContent.userchannelName;
-          }
-
-          Pubnub.publish({
-              channel: RequestSendchannelName,
-              message: {
-                  /*message_id: */
-                  uuid: (Date.now() + currentUser),
-                  message_id:messageContent.messageId,
-                  content: messageContent,
-                  usecase: "delete",
-                  sender_uuid: currentUser,
-                  date: Date.now()
-              }
-          });
-          Pubnub.publish({
-              channel: channelName,
-              message: {
-                  /*message_id: */
-                  uuid: (Date.now() + currentUser),
-                  message_id:messageContent.messageId,
-                  content: messageContent,
-                  usecase: "delete",
-                  sender_uuid: currentUser,
-                  date: Date.now()
-              }
-          });
-          /*------------------------------------------Publish on live Chat User Unique Channel---------------------------------------------*/
-          Pubnub.publish({
-              channel: liveChatUserUniqueChannel,
-              message: {
-                  /*message_id: */
-                  uuid: (Date.now() + currentUser),
-                  message_id:messageContent.messageId,
-                  content: messageContent,
-                  usecase: "delete",
-                  sender_uuid: currentUser,
-                  date: Date.now()
-              }
-          });
-      }
+        /* if(messageContent.customImage){
+             var fileData = btoa(messageContent.customImage.file);
+             messageContent.customImage.file = fileData;
+         }else{
+             fileData = "";
+         }
+*/
 
 
-  };
+
+
+
+       /*  var messageContent1 = JSON.stringify(messageContent);
+         var loop = "";
+         var messageContentSubString = messageContent1.match(/.{1,20000}/g)
+
+         for (var i = 0; i < messageContentSubString.length; i++) {*/
+
+
+
+
+             /*if (i === messageContentSubString.length - 1) {
+                 loop = "complete";
+             }*/
+
+             if (messageContent.CompilerNotification) {
+
+                 Pubnub.publish({
+                     channel: messageContent.comppilerCodeReceiverChannelName,
+                     message: {
+                         /*message_id: */
+                         uuid: (Date.now() + currentUser + Math.floor(Math.random() * 1000000)),
+                         message_id: messageContent.messageId,
+                         content: messageContent,
+                         usecase: "delete",
+                         sender_uuid: currentUser,
+                         date: Date.now()
+                     }
+                 });
+
+             } else {
+                 if (messageContent.userRequest) {
+                     /*In case of the user request*/
+                     RequestSendchannelName = messageContent.userchannelName;
+                     channelName = messageContent.sendRequestUserEmail;
+                     liveChatUserUniqueChannel = messageContent.liveChatUserUniqueChannel;
+                 } else {
+                     /*In case of the user response*/
+                     /*$rootScope.channelName = messageContent.userchannelName;*/
+                     RequestSendchannelName = messageContent.userchannelName;
+                 }
+
+                 Pubnub.publish({
+                     channel: RequestSendchannelName,
+                     message: {
+                         /*message_id: */
+                         uuid: (Date.now() + currentUser + Math.floor(Math.random() * 1000000)),
+                         message_id: messageContent.messageId,
+                         content: messageContent,
+                         usecase: "delete",
+                         sender_uuid: currentUser,
+                         date: Date.now()
+                     }
+                 });
+                 Pubnub.publish({
+                     channel: channelName,
+                     message: {
+                         /*message_id: */
+                         uuid: (Date.now() + currentUser + Math.floor(Math.random() * 1000000)),
+                         message_id: messageContent.messageId,
+                         content: messageContent,
+                         usecase: "delete",
+                         sender_uuid: currentUser,
+                         date: Date.now()
+                     }
+                 });
+                 /*------------------------------------------Publish on live Chat User Unique Channel---------------------------------------------*/
+                 Pubnub.publish({
+                     channel: liveChatUserUniqueChannel,
+                     message: {
+                         /*message_id: */
+                         uuid: (Date.now() + currentUser + Math.floor(Math.random() * 1000000)),
+                         message_id: messageContent.messageId,
+                         content: messageContent,
+                         usecase: "delete",
+                         sender_uuid: currentUser,
+                         date: Date.now()
+                     }
+                 });
+             }
+       /*  }*/
+
+     };
+
 
 
   init();

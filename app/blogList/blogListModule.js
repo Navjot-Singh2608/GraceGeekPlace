@@ -10,8 +10,7 @@ angular.module('blogList', [
             .state('blogList', {
                 url: '/blogList',
                 cache: false,
-                templateUrl: 'app/blogList/views/blogList.html',
-                controller:'blogListCtrl'
+                templateUrl: 'app/blogList/views/blogList.html'
             });
         $locationProvider.html5Mode(true);
     });

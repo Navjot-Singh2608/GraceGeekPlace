@@ -1,4 +1,5 @@
-angular.module('askquestion').controller('questionCtrl',['$scope','$rootScope','$state','MessageService','LiveUserRequest','$window','$localStorage',
+angular.module('askquestion').controller('questionCtrl',['$scope','$rootScope','$state','MessageService',
+    'LiveUserRequest','$window','$localStorage',
     function ($scope,$rootScope,$state,MessageService,LiveUserRequest,$window,$localStorage){
     $scope.language = "Select Group";
     $scope.messagesend = '';
@@ -186,6 +187,9 @@ angular.module('askquestion').controller('questionCtrl',['$scope','$rootScope','
         };
 
 
+
+
+
     $scope.myProfile = function(){
         $state.go("myProfile");
     };
@@ -236,8 +240,8 @@ angular.module('askquestion').controller('questionCtrl',['$scope','$rootScope','
         };
 
         $scope.showSenderCompilerCode = function(messageContent){
-            $( "#closeNotification" ).trigger( "click" );
-            $( "#showCompilerBtn" ).trigger( "click" );
+            document.getElementById("closeNotification").click();
+            document.getElementById("showCompilerBtn").click();
             var html = ace.edit("htmleditor");
             var css = ace.edit("csseditor");
             var js = ace.edit("jseditor");
@@ -255,7 +259,7 @@ angular.module('askquestion').controller('questionCtrl',['$scope','$rootScope','
 
 
         $scope.showCompilerModel = function(){
-            $rootScope.$broadcast('datacompiler','data')
+            $rootScope.$broadcast('datacompiler','data');
         };
 
 
@@ -274,4 +278,7 @@ angular.module('askquestion').filter('reverse', function() {
 
     };
 });
+
+
+
 

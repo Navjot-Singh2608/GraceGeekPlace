@@ -56,7 +56,7 @@ angular.module('app').directive('messageList', function ($rootScope, $anchorScro
                 scope.$on('acceptUserChat', function(event, acceptedUserDetail){
                    /* getAcceptedUserChat(acceptedUserDetail);*/
                     $rootScope.liveChatRequestedUserId = acceptedUserDetail.liveRequestUserEmail;
-                    scope.messages = MessageService.getMessages();
+                    scope.messages = MessageService.getMessages(acceptedUserDetail.liveChatUserUniqueChannel);
                 });
 
                 /*----------------------First Time Request for live group User List User-----------------------------------*/

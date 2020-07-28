@@ -4,7 +4,7 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
         <div class="container">
             <a><img src="../../img/GeekPlaceLogo.png" alt="Paris" width="40" height="40"></a>
-            <a class="navbar-brand" style="margin-left: 5px;margin-top: 15px" href="#"><strong>GeekPlace</strong></a>
+            <a class="navbar-brand" style="margin-left: 13px;margin-top: 6px" href="#"><strong>GeekPlace</strong></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,11 +42,11 @@
                     <li class="nav-item">
                         <!--<a class="btn btn-rounded btn-info" data-toggle="modal" data-target="#modal-signup">Sign Up</a>
                         <button class="btn blue-gradient btn-rounded">Log In</button>-->
-                        <a data-offset="100" class="btn btn-rounded btn-indigo-2 wow fadeInLeft" data-toggle="modal" data-target="#modal-signin" >Log In</a>
+                        <a style="cursor: pointer" data-offset="100" class="btn btn-rounded btn-indigo-2 wow fadeInLeft" data-toggle="modal" data-target="#modal-signin" >Log In</a>
                     </li>
                     <li class="nav-item">
                         <!--<button class="btn aqua-gradient btn-rounded">Sign Up</button>-->
-                        <a class="btn btn-rounded btn-info" data-toggle="modal" data-target="#modal-signup">Sign Up</a>
+                        <a style="cursor: pointer" class="btn btn-rounded btn-info" data-toggle="modal" data-target="#modal-signup">Sign Up</a>
                     </li>
 
                   <!--  <li class="nav-item">
@@ -208,33 +208,33 @@
                     <br>
                     <div class="md-form">
                         <i class="fa fa-user prefix"></i>
-                        <input type="text" id="form221" class="form-control">
-                        <label for="form42">Your name</label>
+                        <input type="text" ng-model="contactMessage.name" id="form221" class="form-control">
+                        <label for="form221" >Your name</label>
                     </div>
 
-                    <div class="md-form">
+                   <!-- <div class="md-form">
                         <i class="fa fa-envelope prefix"></i>
                         <input type="text" id="form3211" class="form-control">
                         <label for="form34">Your email</label>
-                    </div>
+                    </div>-->
 
                     <div class="md-form">
                         <i class="fa fa-tag prefix"></i>
-                        <input type="text" id="form321" class="form-control">
-                        <label for="form34">Subject</label>
+                        <input type="text" ng-model="contactMessage.subject" id="form321" class="form-control">
+                        <label for="form321">Subject</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fa fa-pencil prefix"></i>
-                        <textarea type="text" id="form8" class="md-textarea"></textarea>
-                        <label for="form8">Textarea</label>
+                        <textarea type="text" ng-model="contactMessage.query" id="form8" class="md-textarea"></textarea>
+                        <label for="form8">Write your query</label>
                     </div>
 
                     <div class="text-center">
-                        <button class="btn btn-lg btn-outline-cyan waves-effect">Submit</button>
+                        <button  ng-click="userQuery()" class="btn btn-lg btn-outline-cyan waves-effect">Submit</button>
 
                         <div class="call">
-                            <p>Or would you prefer to call? <span class="cf-phone"><i class="fa fa-phone"></i>+01 234 565 280</span></p>
+                            <p>Or would you prefer to call? <span class="cf-phone"><i class="fa fa-phone"></i>+1 519 500 5830</span></p>
                         </div>
                     </div>
                 </div>
@@ -303,16 +303,16 @@
         <section id="features" class="section feature-box mt-4 mb-5">
 
             <!--Section heading-->
-            <h1 class="mb-3  my-5 pt-5 font-bold wow fadeIn" data-wow-delay="0.2s">Features</h1>
+            <!--<h1 class="mb-3  my-5 pt-5 font-bold wow fadeIn" data-wow-delay="0.2s">Features</h1>-->
 
             <!--Section description-->
             <p class="section-description wow fadeIn" data-wow-delay="0.2s">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum quas, eos officia maiores ipsam ipsum dolores reiciendis ad voluptas, animi obcaecati adipisci sapiente mollitia.</p>
+              GeekPlace is an online Learning platform designed especially for the knowledge seekers both for the begineers and experienced onces.</p>
 
             <!--First row-->
             <div class="row features">
 
-                <div ng-click="askExpert()" class="col-lg-4 text-center">
+                <div class="col-lg-4 text-center">
                     <div class="icon-area">
                         <div class="circle-icon">
                             <i class="fa fa-gears"></i>
@@ -320,7 +320,7 @@
                         <br>
                         <strong>Ask Expert</strong>
                         <div class="mt-1">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting let. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>GeekPlace has the feature like asking doubts from domain person and transfering code to them.</p>
                         </div>
                     </div>
                 </div>
@@ -331,9 +331,9 @@
                             <i class="fa fa-book"></i>
                         </div>
                         <br>
-                        <strong>Easy Tutorials</strong>
+                        <strong>Programming Blogs</strong>
                         <div class="mt-1">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting let. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>GeekPlace has the blogs and tutorials related to the programming language which enhance your skills</p>
                         </div>
                     </div>
                 </div>
@@ -346,7 +346,7 @@
                         <br>
                         <strong>Free Support</strong>
                         <div class="mt-1">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting let. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Get free support from the programming experts from their domain.</p>
                         </div>
                     </div>
                 </div>
@@ -374,9 +374,12 @@
                 <!--Second column-->
                 <div class="col-lg-4 col-md-12 center-on-small wow fadeIn" data-wow-delay="0.3s">
                     <h3 class="cyan-text-4 mt-5 pt-3">Get free support</h3>
-                    <h1 class=" font-bold font-up mb-5">Powerful Material Design UI KIT</h1>
-                    <p class="grey-text mb-4" align="justify">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <a href="#!" class="btn btn-rounded btn-indigo-2"><i class="fa fa-download"></i>Get software</a>
+                   <!-- <h1 class=" font-bold font-up mb-5">Powerful Material Design UI KIT</h1>-->
+                    <p class="grey-text mb-4" align="justify">
+                        This place is for the coders and you get to interact with the experts of their domain fields asks and drop your
+                        code to them for easy interaction. This all forms the geeks community.
+                    </p>
+                   <!-- <a href="#!" class="btn btn-rounded btn-indigo-2"><i class="fa fa-download"></i>Get software</a>-->
 
                 </div>
                 <!--/Second column-->
@@ -396,11 +399,16 @@
 
                 <!--First column-->
                 <div class="col-lg-5 col-md-5 center-on-small mb-2 smooth-scroll wow fadeIn" data-wow-delay="0.2s">
-                    <h3 class="cyan-text-4 mt-5 pt-3">Many free templates</h3>
-                    <h1 class=" mb-2 font-up font-bold mb-5">Get The Most Amazing Builder</h1>
-                    <p class="grey-text">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <p class="grey-text mb-4" align="justify">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim. </p>
-                    <a href="#demo" data-offset="100" class="btn btn-rounded btn-indigo-2"><i class="fa fa-eye"></i>Live demo</a>
+                    <h3 class="cyan-text-4 mt-5 pt-3">Programming Blogs</h3>
+                   <!-- <h1 class=" mb-2 font-up font-bold mb-5">Get The Most Amazing Builder</h1>-->
+                    <p class="grey-text">
+
+                      </p>
+                    <p class="grey-text mb-4" align="justify">
+                       Get the unlimited number of programming blogs which help to increase your programming skills.All the blogs are for the
+                        beginners and the experienced onces
+                    </p>
+                   <!-- <a href="#demo" data-offset="100" class="btn btn-rounded btn-indigo-2"><i class="fa fa-eye"></i>Live demo</a>-->
 
                 </div>
                 <!--/First column-->
@@ -419,76 +427,78 @@
 
     </div>
 
+        <!-- **********************************Container for the companies which support this website**********************************-->
+
     <!--Second container-->
-    <div class="container-fluid background-grey">
+<!--    <div class="container-fluid background-grey">
         <div class="container pt-4">
 
-            <!--Heading-->
+            &lt;!&ndash;Heading&ndash;&gt;
             <div class="text-center">
                 <h1 class="mb-1  font-bold mt-5 mb-3 wow fadeIn" data-wow-delay="0.2s">Take a Quick Look</h1>
                 <h3 class="mb-5 wow fadeIn" data-wow-delay="0.2s">The Best Companies Which Trust Our Digital Goods</h3>
             </div>
 
-            <!--Items wrapper-->
+            &lt;!&ndash;Items wrapper&ndash;&gt;
             <div class="mb-2 flex-center">
 
-                <!--First row-->
+                &lt;!&ndash;First row&ndash;&gt;
                 <div class="row mb-5 pb-3 wow fadeIn logos-panel" data-wow-delay="0.4s">
 
-                    <!--First column-->
+                    &lt;!&ndash;First column&ndash;&gt;
                     <div class="col-md-3 flex-center">
                         <img src="https://mdbootstrap.com/img/Photos/Template/5.png" class="img-fluid">
                     </div>
-                    <!--/First column-->
+                    &lt;!&ndash;/First column&ndash;&gt;
 
-                    <!--Second column-->
+                    &lt;!&ndash;Second column&ndash;&gt;
                     <div class="col-md-3 flex-center">
                         <img src="https://mdbootstrap.com/img/Photos/Template/6.png" class="img-fluid">
                     </div>
-                    <!--/Second column-->
+                    &lt;!&ndash;/Second column&ndash;&gt;
 
-                    <!--Third column-->
+                    &lt;!&ndash;Third column&ndash;&gt;
                     <div class="col-md-3 flex-center">
                         <img src="https://mdbootstrap.com/img/Photos/Template/7.png" class="img-fluid">
                     </div>
-                    <!--/Third column-->
+                    &lt;!&ndash;/Third column&ndash;&gt;
 
-                    <!--Fourth column-->
+                    &lt;!&ndash;Fourth column&ndash;&gt;
                     <div class="col-md-3 flex-center">
                         <img src="https://mdbootstrap.com/img/Photos/Template/9.png" class="img-fluid">
                     </div>
-                    <!--/Fourth column-->
+                    &lt;!&ndash;/Fourth column&ndash;&gt;
 
                 </div>
-                <!--/First row-->
+                &lt;!&ndash;/First row&ndash;&gt;
 
             </div>
-            <!--/Items wrapper-->
+            &lt;!&ndash;/Items wrapper&ndash;&gt;
 
         </div>
-    </div>
+    </div>-->
     <!--/Second container-->
 
     <div class="container">
 
         <!--Section: Pricing v.3-->
-        <section class="section mt-4 mb-5">
+       <!-- <section class="section mt-4 mb-5">
 
-            <!--Section heading-->
+            &lt;!&ndash;Section heading&ndash;&gt;
             <div class="text-center">
                 <h1 class="mb-3  my-5 pt-4 font-bold wow fadeIn" data-wow-delay="0.2s">Our pricing plans</h1>
-                <!--Section description-->
+                &lt;!&ndash;Section description&ndash;&gt;
                 <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p>
 
-                <!--First row-->
+                &lt;!&ndash;First row&ndash;&gt;
                 <div class="row">
 
-                    <!--First column-->
+                    &lt;!&ndash;First column&ndash;&gt;
                     <div class="col-lg-4 col-md-12 mb-r">
-                        <!--Card-->
+                        &lt;!&ndash;Card&ndash;&gt;
                         <div class="card">
 
-                            <!--Content-->
+                            &lt;!&ndash;Content&ndash;&gt;
                             <div class="text-center">
                                 <div class="card-body">
                                     <h5>Basic plan</h5>
@@ -498,7 +508,7 @@
                                         </div>
                                     </div>
 
-                                    <!--Price-->
+                                    &lt;!&ndash;Price&ndash;&gt;
                                     <h2><strong>59$</strong></h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa pariatur id nobis accusamus deleniti cumque hic laborum.</p>
                                     <a class="btn btn-info btn-rounded">Buy now</a>
@@ -506,16 +516,16 @@
                             </div>
 
                         </div>
-                        <!--/.Card-->
+                        &lt;!&ndash;/.Card&ndash;&gt;
                     </div>
-                    <!--/First column-->
+                    &lt;!&ndash;/First column&ndash;&gt;
 
-                    <!--Second column-->
+                    &lt;!&ndash;Second column&ndash;&gt;
                     <div class="col-lg-4 col-md-12 mb-r">
-                        <!--Card-->
+                        &lt;!&ndash;Card&ndash;&gt;
                         <div class="card light-blue darken-4">
 
-                            <!--Content-->
+                            &lt;!&ndash;Content&ndash;&gt;
                             <div class="text-center white-text">
                                 <div class="card-body">
                                     <h5>Premium plan</h5>
@@ -525,7 +535,7 @@
                                         </div>
                                     </div>
 
-                                    <!--Price-->
+                                    &lt;!&ndash;Price&ndash;&gt;
                                     <h2><strong>79$</strong></h2>
                                     <p>Esse corporis saepe laudantium velit adipisci cumque iste ratione facere non distinctio cupiditate sequi atque.</p>
                                     <a class="btn btn-outline-white btn-rounded">Buy now</a>
@@ -533,16 +543,16 @@
                             </div>
 
                         </div>
-                        <!--/.Card-->
+                        &lt;!&ndash;/.Card&ndash;&gt;
                     </div>
-                    <!--/Second column-->
+                    &lt;!&ndash;/Second column&ndash;&gt;
 
-                    <!--Third column-->
+                    &lt;!&ndash;Third column&ndash;&gt;
                     <div class="col-lg-4 col-md-12 mb-r">
-                        <!--Card-->
+                        &lt;!&ndash;Card&ndash;&gt;
                         <div class="card">
 
-                            <!--Content-->
+                            &lt;!&ndash;Content&ndash;&gt;
                             <div class="text-center">
                                 <div class="card-body">
                                     <h5>Advanced plan</h5>
@@ -552,7 +562,7 @@
                                         </div>
                                     </div>
 
-                                    <!--Price-->
+                                    &lt;!&ndash;Price&ndash;&gt;
                                     <h2><strong>99$</strong></h2>
                                     <p>At ab ea a molestiae corrupti numquam quo beatae minima ratione magni accusantium repellat eveniet quia vitae.</p>
                                     <a class="btn btn-info btn-rounded">Buy now</a>
@@ -560,61 +570,61 @@
                             </div>
 
                         </div>
-                        <!--/.Card-->
+                        &lt;!&ndash;/.Card&ndash;&gt;
                     </div>
-                    <!--/Third column-->
+                    &lt;!&ndash;/Third column&ndash;&gt;
 
                 </div>
-                <!--/First row-->
+                &lt;!&ndash;/First row&ndash;&gt;
 
-        </section>
+        </section>-->
         <!--/Section: Pricing v.3-->
 
-        <hr class="between-sections">
+       <!-- <hr class="between-sections">-->
 
         <!--Section: Video-->
-        <section id="demo" class="section mt-4 mb-5">
+      <!--  <section id="demo" class="section mt-4 mb-5">
 
-            <!--Section heading-->
+            &lt;!&ndash;Section heading&ndash;&gt;
             <div class="text-center">
                 <h1 class="mb-3 my-5 pt-4 font-bold wow fadeIn" data-wow-delay="0.2s">See MDW Demo</h1>
 
-                <!--Section description-->
+                &lt;!&ndash;Section description&ndash;&gt;
                 <p class="section-description wow fadeIn" data-wow-delay="0.2s">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-                <!--First row-->
+                &lt;!&ndash;First row&ndash;&gt;
                 <div class="row flex-center">
 
-                    <!--First column-->
+                    &lt;!&ndash;First column&ndash;&gt;
                     <div class="col-md-8 wow fadeIn" data-wow-delay="0.4s">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/L9K--hZhxY0" allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/L9K&#45;&#45;hZhxY0" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <!--First column-->
+                    &lt;!&ndash;First column&ndash;&gt;
 
                 </div>
                 </div>
-                <!--First row-->
+                &lt;!&ndash;First row&ndash;&gt;
 
-        </section>
+        </section>-->
         <!--/Section: Video-->
 
-        <hr class="between-sections">
+       <!-- <hr class="between-sections">-->
 
         <!--Section: Download-->
-        <section id= "download" class="section mt-4">
+     <!--   <section id= "download" class="section mt-4">
 
-            <!--First row-->
+            &lt;!&ndash;First row&ndash;&gt;
             <div class="row">
 
-                <!--Second column-->
+                &lt;!&ndash;Second column&ndash;&gt;
                 <div class="col-lg-4 col-md-12 mb-r mt-5 center-on-small-only wow fadeIn" data-wow-delay="0.2s">
                     <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/iphone-admin1.png" alt="" class="z-depth-0 img-fluid">
                 </div>
-                <!--/Second column-->
+                &lt;!&ndash;/Second column&ndash;&gt;
 
-                <!--Second column-->
+                &lt;!&ndash;Second column&ndash;&gt;
                 <div class="col-lg-7 col-md-12 center-on-small wow fadeIn" data-wow-delay="0.3s">
                     <i class="fa fa-cloud-download fa-5x cyan-text-4 mt-5 pt-3"></i>
                     <h1 class=" font-up  font-bold mb-5 pt-2">Download Software From MDB Today!</h1>
@@ -622,82 +632,82 @@
                     <a href="#!" class="btn btn-rounded btn-info"><i class="fa fa-download"></i>Download MDB</a>
 
                 </div>
-                <!--/Second column-->
+                &lt;!&ndash;/Second column&ndash;&gt;
             </div>
-            <!--/First row-->
+            &lt;!&ndash;/First row&ndash;&gt;
 
-        </section>
+        </section>-->
         <!--/Section: Download-->
 
-        <hr class="between-sections">
+      <!--  <hr class="between-sections">-->
 
         <!--Section: Testimonials v.3-->
-        <section id="testimonials" class="section team-section">
+      <!--  <section id="testimonials" class="section team-section">
 
-            <!--Section heading-->
+            &lt;!&ndash;Section heading&ndash;&gt;
             <h1 class="text-center my-5 pt-4  font-bold wow fadeIn" data-wow-delay="0.2s">What Clients said:</h1>
 
-            <!--Section description-->
+            &lt;!&ndash;Section description&ndash;&gt;
             <p class="section-description mb-5 wow fadeIn" data-wow-delay="0.2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p>
 
-            <!--Grid row-->
+            &lt;!&ndash;Grid row&ndash;&gt;
             <div class="row text-center">
 
-                <!--Grid column-->
+                &lt;!&ndash;Grid column&ndash;&gt;
                 <div class="col-md-4 mb-r">
 
                     <div class="testimonial">
-                        <!--Avatar-->
+                        &lt;!&ndash;Avatar&ndash;&gt;
                         <div class="avatar">
                             <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg" class="rounded-circle z-depth-1 img-fluid">
                         </div>
 
-                        <!--Content-->
+                        &lt;!&ndash;Content&ndash;&gt;
                         <h4 class="mb-3">Anna Deynah</h4>
                         <h6 class="mb-3 font-bold grey-text">Web Designer</h6>
                         <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.</p>
 
                     </div>
                 </div>
-                <!--Grid column-->
+                &lt;!&ndash;Grid column&ndash;&gt;
 
-                <!--Grid column-->
+                &lt;!&ndash;Grid column&ndash;&gt;
                 <div class="col-md-4 mb-r">
                     <div class="testimonial">
-                        <!--Avatar-->
+                        &lt;!&ndash;Avatar&ndash;&gt;
                         <div class="avatar">
                             <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(8).jpg" class="rounded-circle z-depth-1 img-fluid">
                         </div>
 
-                        <!--Content-->
+                        &lt;!&ndash;Content&ndash;&gt;
                         <h4 class="mb-3">John Doe</h4>
                         <h6 class="mb-3 font-bold grey-text">Web Developer</h6>
                         <p><i class="fa fa-quote-left"></i> Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
 
                     </div>
                 </div>
-                <!--Grid column-->
+                &lt;!&ndash;Grid column&ndash;&gt;
 
-                <!--Grid column-->
+                &lt;!&ndash;Grid column&ndash;&gt;
                 <div class="col-md-4 mb-r">
                     <div class="testimonial">
-                        <!--Avatar-->
+                        &lt;!&ndash;Avatar&ndash;&gt;
                         <div class="avatar">
                             <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="rounded-circle z-depth-1 img-fluid">
                         </div>
-                        <!--Content-->
+                        &lt;!&ndash;Content&ndash;&gt;
                         <h4 class="mb-3">Maria Kate</h4>
                         <h6 class="mb-3 font-bold grey-text">Photographer</h6>
                         <p><i class="fa fa-quote-left"></i> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
 
                     </div>
                 </div>
-                <!--Grid column-->
+                &lt;!&ndash;Grid column&ndash;&gt;
 
             </div>
-            <!--Grid row-->
+            &lt;!&ndash;Grid row&ndash;&gt;
 
-        </section>
+        </section>-->
         <!--/Section: Testimonials v.3-->
 
     </div>

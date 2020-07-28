@@ -10,8 +10,7 @@ angular.module('editPost', [
             .state('editPost', {
                 url: '/editPost',
                 cache: false,
-                templateUrl: 'app/editPost/views/editPost.html',
-                controller:'editBlogPostCtrl'
+                templateUrl: 'app/editPost/views/editPost.html'
             });
         $locationProvider.html5Mode(true);
     });

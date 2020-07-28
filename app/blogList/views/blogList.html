@@ -2,8 +2,6 @@
 <div  ng-controller="blogListCtrl" style="margin-top: 10px" class="bd-example bd-example-tabs">
 
   <div  style="padding: 20px">
-
-
       <div class="row">
 
           <div class="col-md-3 col-lg-3">
@@ -86,41 +84,49 @@
                           <div style="margin: -7px;height:210px" class="blog-container" >
 
                               <div class="blog-header">
-                                  <div class="blog-author--no-cover">
-                                      <h3>Russ Beye</h3>
+                                  <div style="display: inline" class="userBlogList-card__img">
+                                      <img ng-if="blog.customImage.name" ng-src="{{'data:image/jpeg;base64,' + hexToBase64(blog.customImage.file)}}" alt="userProfile card">
+                                      <img ng-if="!blog.customImage.name" ng-src="../../img/avatar.png" alt="userProfile card">
+
+                                  </div>
+                                  <div style="display: inline-block" class="blog-author--no-cover">
+                                      <h3>{{blog.fullName}}</h3>
+                                      <hr>
+                                      <p style="float: right">{{blog.postDate}}</p>
                                   </div>
                               </div>
 
-                              <div class="blog-body">
+                              <div class="blogList-body">
                                   <div class="blog-title">
-                                      <h1><a href="#">{{blog.postName}}</a></h1>
+                                      <h3><a href="#">{{blog.postName}}</a></h3>
                                   </div>
                                   <div class="blog-summary">
-                                      <p>{{blog.postDescription}}</p>
+                                      <p>{{blog.country}}, {{blog.state}}</p>
                                   </div>
-                                  <button  style="display: inline;margin-right: -5px;float:right;background-color: #439ede!important;padding: 8px 17px 8px 17px" ng-click="blogPost(blog)" class="btn btn-success blogBtn"  type="button"><span>Read Post</span></button>
+                                  <div style="display: inline" class="blog-summary">
+                                      <p style="display: inline">{{blog.postDescription}}</p>
+                                  </div>
+                                  <div style="display: inline">
+                                      <button  style="float:right;background-color: #439ede!important;display: inline" ng-click="blogPost(blog.postkey)" class="btn btn-success blogBtn"  type="button">
+                                          <span>Read Post</span>
+                                      </button>
+                                  </div>
+
                                   <div class="blog-tags">
                                       <ul>
-                                          <li><a href="#">design</a></li>
-                                          <li><a href="#">web dev</a></li>
-                                          <li><a href="#">css</a></li>
+                                          <li ng-repeat="skill in blog.skills"><a href="#">{{skill.text}}</a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="blog-footer">
+                                      <ul>
+
                                       </ul>
                                   </div>
                               </div>
-
-                              <div class="blog-footer">
-                                  <ul>
-                                      <li class="published-date">12 days ago</li>
-                                      <li class="comments"><a href="#"><svg class="icon-bubble"><use xlink:href="#icon-bubble"></use></svg><span class="numero">8</span></a></li>
-                                      <li class="shares"><a href="#"><svg class="icon-star"><use xlink:href="#icon-star"></use></svg><span class="numero">3</span></a></li>
-                                  </ul>
-                              </div>
-
                           </div>
                       </td>
                   </tr>
                   </tbody>
-
               </table>
           </div>
 
@@ -132,47 +138,6 @@
                   padding: 3px;
               }
           </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   </div>

@@ -1,5 +1,8 @@
 var mongo = require('mongodb');
 var JSONCreate = require("./JSONCreate");
+/*var ObjectId = require('mongodb').ObjectID;*/
+var mongoose = require('mongoose');
+var ObjectId = mongoose.Types.ObjectId;
 var collectionName = 'myPosts';
 var Server = mongo.Server,
     Db = mongo.Db;
@@ -38,6 +41,54 @@ exports.findById = function (req, res) {
 
 };
 
+exports.postData = function (req, res) {
+    var postkey = req.query.id;
+    console.log("post keyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+    console.log(req.query.id);
+    var query = {
+        "postDetails.postDescription.postKey": ObjectId(postkey)
+    }
+    var collectionBlog = 'myBlog';
+    db.collection(collectionBlog, function (err, collection) {
+        collection.aggregate([
+                {$unwind: "$postDetails.postDescription"},
+                {$match:
+                    query
+                },
+                {$group:{_id: {
+                            "BlogDetail" : "$postDetails.postDescription",
+                            "email" : "$email"
+                        }}},
+                { $lookup:
+                        {
+                            from: "userprofile",
+                            localField: "_id.email",
+                            foreignField: "email",
+                            as: "userDetail"
+                        }},
+                {
+                    $project: {
+                        "userDetail.fullName": 1,
+                        "userDetail.country":1,
+                        "userDetail.state" : 1,
+                        "userDetail.customImage":1,
+                        "userDetail.skills":1
+
+                    }
+                }
+            ],
+            function( err, data ) {
+                if ( err ){
+                    throw err;
+                }
+                console.log(data);
+                res.send(data);
+            }
+        );
+    });
+
+};
+
 /*--------------------------------------------Get All Users Details------------------------------------------------*/
 exports.getAllUsersDetails = function (req, res) {
     db.collection(collectionName, function (err, collection) {
@@ -71,7 +122,7 @@ exports.createPost = function (req, res) {
             }
         });
     });
-};;
+};
 
 /*----------------------------------------Update user Profile data----------------------------------------------------*/
 exports.updateUserProfile = function (req, res) {

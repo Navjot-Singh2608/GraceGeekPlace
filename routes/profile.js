@@ -83,10 +83,12 @@ exports.findById = function (req, res) {
 
 /*--------------------------------------------Get All Users Details------------------------------------------------*/
 exports.getAllUsersDetails = function (req, res) {
-    db.collection(collectionName, function (err, collection) {
-        collection.find({}).toArray(function(error, documents) {
-            if (err) throw error;
 
+   var selectedLang = req.query.selectedLang;
+
+   db.collection(collectionName, function (err, collection) {
+        collection.find({"skills.text":selectedLang}).toArray(function(error, documents) {
+            if (err) throw error;
             res.send(documents);
         });
     });

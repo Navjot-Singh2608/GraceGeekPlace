@@ -17,8 +17,9 @@
                   <div class="media row">
                       <div style="height: 54px" class="col-md-4 col-lg-4">
                           <a href="#" class="pull-left">
-                              <img style="border: 2px solid #d1d3d4;border-radius: 50%" src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" width="42px" class="media-photo">
-                              <span style="left: 70px;position: absolute;top:-3px;font-weight: 600">{{userDetail.fullName}}</span>
+                              <img style="border: 2px solid #d1d3d4;border-radius: 50%" ng-src="{{'data:image/jpeg;base64,' + hexToBase64(userDetail.customImage.file)}}" width="42px" class="media-photo">
+                              <span class="profile-list-label">{{userDetail.fullName}}</span>
+                              <span class="profile-list-sub-label">{{userDetail.position}}</span>
                               <span class="summary chat-quote">{{userDetail.skillsQuotes}}</span>
                           </a>
                       </div>
@@ -27,7 +28,7 @@
                       </div>
                       <div class="col-md-3 col-lg-3">
                           <div class="media-body" style="margin-left: 22px">
-                              <span style="float:right" class="media-meta pull-right">13 Febuary, 2016</span>
+                              <span style="float:right" class="media-meta pull-right"></span>
                               <h4 class="title">
                                  <!-- <span class="pull-right pagado">(Pagado)</span>-->
                                   <span ng-if="userDetail.action == 'join'"><span class="green-dot"></span><span style="margin-left: 12px;color: #228B22">Online</span></span>

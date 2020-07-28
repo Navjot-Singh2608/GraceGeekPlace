@@ -57,32 +57,19 @@ angular.module('liveGroupChat').controller('liveGroupChatCtrl',['$scope','$rootS
  /*-------------------------------------------Fetch all users details from the profile collection--------------------------------*/
        $scope.getUsersProfileAllDetails = function(){
            var liveGroupChatGroup = $window.localStorage.getItem('liveGroupChatType');
-           profileService.getAllUsersProfileDetails().then(function (response) {
-               angular.forEach(response.data, function(value, key) {
-                   if(value.skills!=null && value.skills!=undefined){
-                       angular.forEach(value.skills, function(skillObj, key) {
-                           if(skillObj.text == liveGroupChatGroup){
-                               $scope.userProfileDetails.push(value);
-                               userProfileChannels.push(value.email);
-                           }
-                       });
-                   }
-               });
+           profileService.getAllUsersProfileDetails(liveGroupChatGroup).then(function (response) {
+           $scope.userProfileDetails = $scope.userProfileDetails.concat(response.data);
+
                /*Subscribe to all the live users in the live Chat list to know whether they are online or offline*/
              MessageService.getLiveUserDetails(userProfileChannels);
              /*  console.log(liveUserDetails);*/
-           })
+           });
        };
 
         $scope.getUsersProfileAllDetails();
 
 
-
-
-
  /*---------------------------------------------Live User Chat--------------------------------------------------------------------*/
-
-
         $scope.liveUserChat = function(userDetail) {
             $localStorage.liveChatMode = true;
             $scope.liveChatUserUniqueChannel = "";
@@ -125,6 +112,9 @@ angular.module('liveGroupChat').controller('liveGroupChatCtrl',['$scope','$rootS
             });
         });
 
+        $scope.hexToBase64 = function(str) {
+            return str;
+        }
 
 }]);
 

@@ -5,7 +5,7 @@ angular_multi_select.run(['$templateCache', function($templateCache) {
 	var html = s => s.toString();
 	$templateCache.put('angular-multi-select.tpl', html`
 
-		<div style="width:80%" class="ams-button" ng-click="open = !open">
+		<div style="width:80%;margin-top: 10px" class="ams-button" ng-click="open = !open">
 			<div class="ams-button-text" ng-bind-html="amssh.create_dropdown_label(stats, outputModelNotFormatted, self.output_type)"></div>
 			<div class="ams-caret"></div>
 		</div>

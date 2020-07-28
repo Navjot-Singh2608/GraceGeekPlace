@@ -12,7 +12,7 @@
           <div class="form-group">
             <label>Post Description </label>
             <input type="text" id="editBlogPostDescription" ng-model="editBlogPost.postDescription" disabled class="default-input"/>
-              <input type='file' my-first-directive file-model='myUpload' class="custom-upload" accept="'image/*'" ngf-pattern="'image/*'" ngf-max-size="20MB" style="">
+            <!--  <input type='file' my-first-directive file-model='myUpload' class="custom-upload" accept="'image/*'" ngf-pattern="'image/*'" ngf-max-size="20MB" style="">-->
           </div>
          
         </form>
@@ -28,7 +28,7 @@
     </div>
 
      <div style="margin-top: 10px">
-        <textarea  name="editor1" ng-model="editBlogPost.postDetailDescription" id="editor1" rows="10" cols="80">
+        <textarea  name="editor1" ng-model="ObjMessage.messageData" id="editor1" rows="10" cols="80">
         You are ready for your Post.
       </textarea>
      </div>
@@ -37,6 +37,11 @@
           </div>
           <div class="col-md-2 col-lg-2">
               <button type="submit" ng-click="saveBlogPost()" class="btn btn-indigo">Save Post</button>
+          </div>
+
+          <div class="box">
+              <input type='file' id="file-upload" my-first-directive file-model='myUpload' class="inputfile inputfile-2" accept="'image/*'" ngf-pattern="'image/*'" ngf-max-size="20MB" style="">
+              <label for="file-upload" style="position: absolute;top: 180px;right: 59px;"><svg width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Choose a file&hellip;</span></label>
           </div>
 
       </div>

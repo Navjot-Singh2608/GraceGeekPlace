@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{@types/angular, @types/jest-json-schema, angularjs}" />
+    <file url="PROJECT" libraries="{angular-ui-router, angularjs, dropzone, jquery.bootpag, lodash, react, react-dom, react-dom.development, react.development, redux, redux-thunk, zoom-meeting-1.5.0, zoom-meeting-1.7.10, zoom-meeting-1.7.6, zoom-meeting-1.7.9}" />
   </component>
 </project>

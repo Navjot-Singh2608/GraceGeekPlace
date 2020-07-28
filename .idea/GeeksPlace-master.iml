@@ -11,5 +11,19 @@
     <orderEntry type="library" name="angularjs" level="project" />
     <orderEntry type="library" name="@types/angular" level="application" />
     <orderEntry type="library" name="@types/jest-json-schema" level="application" />
+    <orderEntry type="library" name="dropzone" level="application" />
+    <orderEntry type="library" name="jquery.bootpag" level="application" />
+    <orderEntry type="library" name="angular-ui-router" level="application" />
+    <orderEntry type="library" name="zoom-meeting-1.7.9" level="application" />
+    <orderEntry type="library" name="react" level="application" />
+    <orderEntry type="library" name="react-dom" level="application" />
+    <orderEntry type="library" name="redux" level="application" />
+    <orderEntry type="library" name="redux-thunk" level="application" />
+    <orderEntry type="library" name="lodash" level="application" />
+    <orderEntry type="library" name="zoom-meeting-1.5.0" level="application" />
+    <orderEntry type="library" name="zoom-meeting-1.7.6" level="application" />
+    <orderEntry type="library" name="zoom-meeting-1.7.10" level="application" />
+    <orderEntry type="library" name="react.development" level="application" />
+    <orderEntry type="library" name="react-dom.development" level="application" />
   </component>
 </module>
